@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>CricBuzz</title>
+
+        <!-- Font Awesome Icons -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+        <!-- Plugin CSS -->
+        <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+        <!-- Theme CSS - Includes Bootstrap -->
+        <link href="css/creative.min.css" rel="stylesheet">
+
+
+
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                $("#views").click(function () {
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/viewstudent')
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+                                $('#Student tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+
+                                }
+
+                                $('#Student').append(stext);
+
+
+                            });
+                });
+            });
+
+        </script>
+
+        <script>
+            setTimeout(function () {
+                location.reload();
+            }, 100000);
+
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#add").click(function () {
+
+                    $('.menu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#ff").click(function () {
+
+                    $('.FFmenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#up").click(function () {
+
+                    $('.Umenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#fu").click(function () {
+
+                    $('.FUmenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#fa").click(function () {
+
+                    $('.emenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#del").click(function () {
+
+                    $('.Dmenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#fd").click(function () {
+
+                    $('.FDelmenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#fin").click(function () {
+
+                    $('.Fmenu').toggle("slide");
+
+
+                });
+            });
+        </script>
+
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#addstd").click(function () {
+
+
+
+                    var email = $('#emailid').val();
+
+
+
+                    var name = $('#sname').val();
+
+                    var address = $('#addr').val();
+
+                    var phone = $('#phoneN').val();
+
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/insertStudent/' + name + '/' + address + '/' + email + '/' + phone)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+                                alert("added ...");
+
+                                var stext = "";
+                                $('#Student tbody').empty();
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#Student').append(stext);
+
+
+
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#Ustd").click(function () {
+
+
+
+                    var uid = $('#Uid').val();
+
+
+
+
+                    var name = $('#Usname').val();
+
+                    var address = $('#Uaddr').val();
+
+                    var phone = $('#UphoneN').val();
+
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/updateStudent/' + name + '/' + address + '/' + phone + '/' + uid)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+
+                                alert("updated ...");
+
+                                $('#Student tbody').empty();
+                                var stext = "";
+
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#Student').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#Dstd").click(function () {
+
+
+
+                    var uid = $('#did').val();
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/deleteStd/' + uid)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+
+                                alert("deleted ...");
+                                $('#Student tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#Student').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#Fstd").click(function () {
+
+
+
+
+
+
+
+
+                    var name = $('#fname').val();
+
+
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/findstd/' + name)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+                                $('#Student tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+                                    alert(json[i].name);
+
+                                }
+
+                                $('#Student').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+
+
+        <!-- Employee -->
+        <script>
+
+
+            $(document).ready(function () {
+                $("#fv").click(function () {
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/viewemp')
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+                                $('#emp tbody').empty();
+                                var stext = "";
+
+
+
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+
+                                }
+
+                                $('#emp').append(stext);
+
+
+                            });
+                });
+            });
+
+        </script>
+
+        <!-- add -->  
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#faddstd").click(function () {
+
+
+
+                    var email = $('#femailid').val();
+
+
+
+                    var name = $('#fsname').val();
+
+                    var address = $('#faddr').val();
+
+                    var phone = $('#fphoneN').val();
+
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/insertEmp/' + name + '/' + address + '/' + email + '/' + phone)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+                                alert("added ...");
+                                $('#emp tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#emp').append(stext);
+
+
+
+
+
+                            });
+
+
+
+
+
+                });
+            });
+
+
+        </script>
+
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#FUstd").click(function () {
+
+
+
+                    var uid = $('#fUid').val();
+
+
+
+
+                    var name = $('#fUsname').val();
+
+                    var address = $('#fUaddr').val();
+
+                    var phone = $('#fUphoneN').val();
+
+
+
+
+                 
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/updateEmp/' + name + '/' + address + '/' + phone + '/' + uid)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+
+                                alert("updated ...");
+
+                                $('#emp tbody').empty();
+
+                                var stext = "";
+
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#emp').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#FFstd").click(function () {
+
+
+
+                    var name = $('#ffname').val();
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/findemp/' + name)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+                                $('#emp tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+                                }
+
+                                $('#emp').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                $("#Fdstd").click(function () {
+
+
+
+                    var uid = $('#fdid').val();
+
+
+
+
+
+
+
+
+
+                    fetch('http://localhost:8080/PersonRepository-war/api/personRepo/deleteEmp/' + uid)
+                            .then(function (response) {
+
+                                return response.json();
+                            })
+                            .then(function (json) {
+
+
+
+
+
+                                $('#emp tbody').empty();
+                                var stext = "";
+                                for (var i = 0; i < json.length; i++) {
+
+
+
+                                    stext += ' <tbody><tr><td>' + json[i].id + '</td>';
+
+                                    stext += '<td>' + json[i].name + '</td>';
+
+                                    stext += '<td>' + json[i].address + '</td>';
+
+                                    stext += '<td>' + json[i].email + '</td>';
+
+                                    stext += '<td>' + json[i].phone + '</td></tr> </tbody>';
+
+
+
+
+
+                                }
+
+                                $('#emp').append(stext);
+
+
+                            });
+
+
+
+
+
+                });
+            });
+        </script>
+
+
+
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Person Repository</a>
+
+
+
+
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+
+
+                        <li class="nav-item">
+                            <p class="nav-link js-scroll-trigger" id="temp"></p>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" >
+                                Employee
+                            </button>
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item js-scroll-trigger" href="#abou" id= "fv">View Employee</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#abou" id= "fa">ADD Employee</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#abou" id= "fu">Update Employee</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#abou" id= "fd">Delete Employee</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#abou" id= "ff">Find Employee by Name</a>
+                            </div>
+                        </div>
+
+                        <hr class="divider my-4">
+                    </div>
+
+                    <div class="col-lg-8 align-self-baseline"></br>
+
+
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" >
+                                Student
+                            </button>
+                            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item js-scroll-trigger" href="#a" id= "views">View Student</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#a" id= "add">Add Student</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#a" id= "up">Update Student</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#a" id= "del">Delete Student</a>
+                                <a class="dropdown-item js-scroll-trigger" href="#a" id= "fin">Find Student By Name</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </header>
+        <section>
+
+
+        </section>
+
+        <section class="page-section " id="abou">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center" id="com">
+                        <h2>Employee</h2>
+                        <hr class="divider  my-4">
+
+
+
+                        <div>  
+
+                            <table id="emp" class="table table-striped" >
+                                <thead >
+                                    <tr class="table-info">
+                                        <th>Id </th>
+                                        <th>Name </th>
+                                        <th>Address </th>
+                                        <th>Email </th>
+                                        <th>Phone </th>
+                                    </tr>
+                                </thead>
+
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="FDelmenu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Employee:</span>
+                                </div>
+                                <input type="text" id="fdid" class="form-control"  placeholder="id" >
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="Fdstd">Delete</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="FFmenu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Employee:</span>
+                                </div>
+                                <input type="text" id="ffname" class="form-control"  placeholder="name" >
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="FFstd">Find</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="emenu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Employee:</span>
+                                </div>
+                                <input type="text" id="fsname" class="form-control"  placeholder=" name" >
+                                <input type="text" id="faddr" class="form-control"  placeholder=" address"  >
+                                <input type="text"  id="femailid" class="form-control"   placeholder=" email"  >
+                                <input type="text" id="fphoneN" class="form-control"   placeholder=" phone"  > 
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="faddstd">Add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="FUmenu" style="display: none;">
+                            <div> <input type="text" id="fUid"   placeholder="id" >
+
+                            </div>
+                            <hr class="divider my-4">
+
+                            <div class="input-group mb-3" >
+
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="Uinfo">Employee:</span>
+                                </div>
+
+
+                                <input type="text" id="fUsname" class="form-control"  placeholder="new name" >
+                                <input type="text" id="fUaddr" class="form-control"  placeholder="new address"  >
+
+                                <input type="text" id="fUphoneN" class="form-control"   placeholder="new phone"  > 
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="FUstd">Update</button>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+
+
+        <hr class="divider light my-4">
+        <section class="page-section bg-light" id="a">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center" id="allm">
+
+                        <h1>Student</h1>
+                        <hr class="divider my-4">
+
+
+
+                        <div>  
+
+                            <table id="Student" class="table table-striped" >
+                                <thead >
+                                    <tr class="table-info">
+                                        <th>Id </th>
+                                        <th>Name </th>
+                                        <th>Address </th>
+                                        <th>Email </th>
+                                        <th>Phone </th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+
+                        </div>
+
+
+                        <div class="Dmenu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Student:</span>
+                                </div>
+                                <input type="text" id="did" class="form-control"  placeholder="id" >
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="Dstd">Delete</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="Fmenu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Student:</span>
+                                </div>
+                                <input type="text" id="fname" class="form-control"  placeholder="name" >
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="Fstd">Find</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="menu" style="display: none;">
+                            <div class="input-group mb-3" >
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="sinfo">Student:</span>
+                                </div>
+                                <input type="text" id="sname" class="form-control"  placeholder=" name" >
+                                <input type="text" id="addr" class="form-control"  placeholder=" address"  >
+                                <input type="text"  id="emailid" class="form-control"   placeholder=" email"  >
+                                <input type="text" id="phoneN" class="form-control"   placeholder=" phone"  > 
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="addstd">Add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="Umenu" style="display: none;">
+                            <div> <input type="text" id="Uid"   placeholder="id" >
+
+                            </div>
+                            <hr class="divider my-4">
+
+                            <div class="input-group mb-3" >
+
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="Uinfo">Student:</span>
+                                </div>
+
+
+                                <input type="text" id="Usname" class="form-control"  placeholder="new name" >
+                                <input type="text" id="Uaddr" class="form-control"  placeholder="new address"  >
+
+                                <input type="text" id="UphoneN" class="form-control"   placeholder="new phone"  > 
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="Ustd">Update</button>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+
+
+
+
+        <!-- Footer -->
+        <footer class="bg-light py-5">
+            <div class="container">
+                <div class="small text-center text-muted">Copyright &copy; 2019 - Person Repository</div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="js/creative.min.js"></script>
+
+    </body>
+
+</html>
